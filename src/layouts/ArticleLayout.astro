@@ -1,0 +1,94 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import CtaButton from "../components/CtaButton.astro";
+import DisclosureBox from "../components/DisclosureBox.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  productName: string;
+  image: string;
+  imageAlt: string;
+  priceTier: "budget" | "mellem" | "premium";
+  priceNote?: string;
+  pros: string[];
+  cons: string[];
+  affiliateLink: string;
+  ctaText: string;
+  pubDate: Date;
+  updatedDate?: Date;
+}
+
+const {
+  title,
+  description,
+  productName,
+  image,
+  imageAlt,
+  priceTier,
+  priceNote,
+  pros,
+  cons,
+  affiliateLink,
+  ctaText,
+  pubDate,
+  updatedDate,
+} = Astro.props as Props;
+
+const priceLabel: Record<string, string> = {
+  budget: "Budget ($)",
+  mellem: "Mellemklasse ($$)",
+  premium: "Premium ($$$)",
+};
+
+const dateFormatter = new Intl.DateTimeFormat("da-DK", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <article>
+    <header class="article-header">
+      <h1 class="page-title">{productName}</h1>
+      <div class="article-meta">
+        <span class="price-tier">{priceLabel[priceTier]}</span>
+        {priceNote && <span>{priceNote}</span>}
+        <span>
+          Opdateret {dateFormatter.format(updatedDate ?? pubDate)}
+        </span>
+      </div>
+      <img
+        class="article-hero"
+        src={image}
+        alt={imageAlt}
+        loading="eager"
+      />
+      <CtaButton href={affiliateLink} text={ctaText} />
+    </header>
+
+    <div class="pros-cons">
+      <div>
+        <h2>Fordele</h2>
+        <ul>
+          {pros.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h2>Ulemper</h2>
+        <ul>
+          {cons.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <slot />
+    </div>
+
+    <CtaButton href={affiliateLink} text={ctaText} />
+
+    <DisclosureBox />
+  </article>
+</BaseLayout>

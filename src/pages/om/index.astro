@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../site.config";
+---
+
+<BaseLayout
+  title="Om os"
+  description={`Læs om ${siteConfig.name} og hvordan vi laver vores anmeldelser.`}
+>
+  <h1 class="page-title">Om os</h1>
+  <div class="article-body">
+    <p>
+      {siteConfig.name} hjælper dig med at træffe bedre valg inden for{" "}
+      {siteConfig.niche}. Vi tester, sammenligner og research'er produkter,
+      så du slipper for selv at bruge timer på det.
+    </p>
+    <p>
+      Vores anmeldelser er baseret på produktdata, brugeranmeldelser og egen
+      erfaring. Nogle af links på siden er affiliate-links, hvilket betyder,
+      at vi kan modtage en lille provision, hvis du handler via dem – uden
+      ekstra omkostning for dig. Du kan læse mere om det på vores{" "}
+      <a href="/affiliate-oplysning/">affiliate-oplysningsside</a>.
+    </p>
+    <p>
+      Har du spørgsmål, forslag til produkter vi bør anmelde, eller har vi
+      lavet en fejl? Skriv endelig til os.
+    </p>
+  </div>
+</BaseLayout>

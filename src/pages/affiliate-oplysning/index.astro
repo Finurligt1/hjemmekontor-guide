@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../site.config";
+---
+
+<BaseLayout
+  title="Affiliate-oplysning"
+  description="Oplysning om affiliate-links og hvordan vi tjener penge på denne side."
+>
+  <h1 class="page-title">Affiliate-oplysning</h1>
+  <div class="article-body">
+    <p>
+      {siteConfig.name} deltager i et eller flere affiliate-programmer. Det
+      betyder, at vi kan optjene en provision, når du klikker på et link på
+      denne side og efterfølgende foretager et køb hos forhandleren – uden at
+      det koster dig noget ekstra.
+    </p>
+    <p>
+      Denne oplysning gives i overensstemmelse med gældende krav om
+      tydeliggørelse af kommercielle relationer (bl.a. FTC's retningslinjer
+      for affiliate-markedsføring i USA og tilsvarende principper om
+      gennemsigtighed i markedsføringsloven i Danmark).
+    </p>
+    <p>
+      Alle links, der kan udløse en provision til os, er markeret som
+      sponsorerede i koden (<code>rel="sponsored nofollow"</code>), og vi
+      viser desuden en tydelig oplysningsboks nederst i hver produktartikel.
+    </p>
+    <p>
+      Vores anbefalinger og vurderinger er vores egne. Et affiliate-samarbejde
+      ændrer ikke på, hvordan vi vurderer et produkts fordele og ulemper.
+    </p>
+  </div>
+</BaseLayout>
