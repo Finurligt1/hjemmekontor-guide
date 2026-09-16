@@ -13,31 +13,42 @@ npm run dev
 
 Sitet kører herefter på `http://localhost:4321`.
 
-## Før du går i luften
+## Nuværende opsætning: GitHub Pages
+
+Sitet deployes lige nu automatisk til **GitHub Pages** ved hvert push til
+`main`, via `.github/workflows/deploy.yml`. Live-URL:
+
+**https://finurligt1.github.io/hjemmekontor-guide/**
+
+Dette kræver én engangsindstilling i repoet (se "Aktivér GitHub Pages"
+nedenfor). `site` og `base` i `astro.config.mjs` er sat til denne URL, og
+`siteUrl` i `src/site.config.ts` matcher.
+
+### Aktivér GitHub Pages (kun én gang)
+
+1. Gå til repoets **Settings → Pages**.
+2. Under **Build and deployment → Source**, vælg **GitHub Actions**.
+3. Push (eller gen-kør workflowet under **Actions**) - sitet er live på
+   URL'en ovenfor et minuts tid efter.
+
+### Skift til eget domæne senere
 
 1. Ret `src/site.config.ts`:
    - `name`: sidens navn
-   - `niche`: din niche, fx "kaffeudstyr til små lejligheder"
-   - `siteUrl`: dit rigtige domæne
+   - `niche`: din niche
+   - `siteUrl`: dit rigtige domæne (fx `https://dit-domaene.dk`)
    - `description`: kort beskrivelse af sitet
-2. Ret `site` i `astro.config.mjs` til samme domæne som `siteUrl` ovenfor
-   (bruges til `sitemap.xml` og canonical-links).
-3. Slet eller erstat eksempelartiklen
+2. Ret `astro.config.mjs`:
+   - `site`: samme domæne som `siteUrl` ovenfor
+   - Fjern `base: "/hjemmekontor-guide"` helt (kun nødvendigt for GitHub
+     Pages-projektsider under `github.io/<repo>/`)
+3. Hvis du fortsat bruger GitHub Pages med eget domæne, tilføj en
+   `CNAME`-fil i `public/` med domænet. Ellers kan du deploye til Netlify
+   eller Vercel i stedet - begge genkender Astro automatisk (build command
+   `npm run build`, output `dist`) uden ekstra konfiguration.
+4. Slet eller erstat eksempelartiklen
    `src/content/produkter/eksempel-produkt.md`.
-4. Læg et rigtigt favicon i `public/favicon.svg`, hvis du vil.
-
-## Deploy
-
-Sitet er en almindelig statisk Astro-side (`npm run build` output i `dist/`)
-og kan deployes uden ekstra konfiguration til:
-
-- **Netlify**: Opret nyt site fra dit Git-repo. Build command: `npm run build`,
-  publish directory: `dist`.
-- **Vercel**: Importér repoet. Vercel genkender Astro automatisk
-  (build command `npm run build`, output `dist`).
-- **GitHub Pages**: Byg med `npm run build` og deploy indholdet af `dist/`
-  til `gh-pages`-branchen (fx via en GitHub Action med
-  `withastro/action`), eller brug `@astrojs/github-pages`-integrationen.
+5. Læg et rigtigt favicon i `public/favicon.svg`, hvis du vil.
 
 ## Tilføje en ny artikel
 

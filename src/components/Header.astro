@@ -1,14 +1,15 @@
 ---
 import { siteConfig } from "../site.config";
+import { withBase } from "../lib/url";
 ---
 
 <header class="site-header">
   <div class="wrapper">
-    <a class="site-logo" href="/">{siteConfig.name}</a>
+    <a class="site-logo" href={withBase("/")}>{siteConfig.name}</a>
     <nav class="site-nav">
-      <a href="/">Forside</a>
-      <a href="/om/">Om os</a>
-      <a href="/affiliate-oplysning/">Affiliate-oplysning</a>
+      <a href={withBase("/")}>Forside</a>
+      <a href={withBase("/om/")}>Om os</a>
+      <a href={withBase("/affiliate-oplysning/")}>Affiliate-oplysning</a>
     </nav>
   </div>
 </header>

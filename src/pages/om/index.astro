@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../site.config";
+import { withBase } from "../../lib/url";
 ---
 
 <BaseLayout
@@ -19,7 +20,7 @@ import { siteConfig } from "../../site.config";
       erfaring. Nogle af links på siden er affiliate-links, hvilket betyder,
       at vi kan modtage en lille provision, hvis du handler via dem – uden
       ekstra omkostning for dig. Du kan læse mere om det på vores{" "}
-      <a href="/affiliate-oplysning/">affiliate-oplysningsside</a>.
+      <a href={withBase("/affiliate-oplysning/")}>affiliate-oplysningsside</a>.
     </p>
     <p>
       Har du spørgsmål, forslag til produkter vi bør anmelde, eller har vi

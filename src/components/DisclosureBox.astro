@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/url";
 // Vises automatisk nederst i alle artikler via ArticleLayout.astro
 ---
 
@@ -7,5 +8,5 @@
   Hvis du klikker videre og handler hos forhandleren, kan vi modtage en
   provision – uden ekstra omkostning for dig. Det påvirker ikke vores
   vurdering af produktet.
-  <a href="/affiliate-oplysning/">Læs mere om vores affiliate-oplysning her</a>.
+  <a href={withBase("/affiliate-oplysning/")}>Læs mere om vores affiliate-oplysning her</a>.
 </aside>

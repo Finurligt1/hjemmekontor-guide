@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/url";
+
 interface Props {
   slug: string;
   productName: string;
@@ -18,8 +20,8 @@ const priceLabel: Record<string, string> = {
 };
 ---
 
-<a class="product-card" href={`/produkter/${slug}/`}>
-  <img src={image} alt={imageAlt} loading="lazy" />
+<a class="product-card" href={withBase(`/produkter/${slug}/`)}>
+  <img src={withBase(image)} alt={imageAlt} loading="lazy" />
   <div class="product-card-body">
     <span class="price-tier">{priceLabel[priceTier]}</span>
     <h3 class="product-card-title">{productName}</h3>

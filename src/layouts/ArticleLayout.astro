@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 import CtaButton from "../components/CtaButton.astro";
 import DisclosureBox from "../components/DisclosureBox.astro";
+import { withBase } from "../lib/url";
 
 interface Props {
   title: string;
@@ -61,7 +62,7 @@ const dateFormatter = new Intl.DateTimeFormat("da-DK", {
       </div>
       <img
         class="article-hero"
-        src={image}
+        src={withBase(image)}
         alt={imageAlt}
         loading="eager"
       />

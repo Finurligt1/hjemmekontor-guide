@@ -1,18 +1,22 @@
-// Central konfiguration for sitet. Ret disse værdier til din egen niche,
-// og husk også at opdatere "site" i astro.config.mjs til samme domæne.
+// Central konfiguration for sitet. Ret disse værdier til din egen niche.
+// "siteUrl" skal matche "site" i astro.config.mjs (uden "base"-delen).
 export const siteConfig = {
   /** Sidens navn, vises i header, footer og browser-fane */
-  name: "Dit Affiliate Site",
+  name: "Hjemmekontor Guiden",
 
-  /** Din niche i klartekst, fx "kaffeudstyr til små lejligheder" */
-  niche: "[skriv din niche her]",
+  /** Din niche i klartekst */
+  niche: "hjemmekontor-udstyr",
 
-  /** Skal matche "site" i astro.config.mjs */
-  siteUrl: "https://dit-domaene.dk",
+  /**
+   * Midlertidig GitHub Pages-URL, indtil der er et rigtigt domæne.
+   * Skift til det endelige domæne, når det er klar - og husk at opdatere
+   * "site" (og evt. fjerne "base") i astro.config.mjs på samme tid.
+   */
+  siteUrl: "https://finurligt1.github.io",
 
   /** Bruges som standard meta-beskrivelse og i disclosure-teksten */
   description:
-    "Uafhængige anmeldelser og anbefalinger inden for [din niche]. Vi hjælper dig med at vælge det rigtige produkt.",
+    "Uafhængige anmeldelser og anbefalinger inden for hjemmekontor-udstyr. Vi hjælper dig med at vælge det rigtige produkt.",
 
   /** Sprog for <html lang="..."> */
   language: "da",
