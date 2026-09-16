@@ -3,6 +3,7 @@ import BaseLayout from "./BaseLayout.astro";
 import CtaButton from "../components/CtaButton.astro";
 import DisclosureBox from "../components/DisclosureBox.astro";
 import { withBase } from "../lib/url";
+import { priceLabel } from "../lib/price";
 
 interface Props {
   title: string;
@@ -35,12 +36,6 @@ const {
   pubDate,
   updatedDate,
 } = Astro.props as Props;
-
-const priceLabel: Record<string, string> = {
-  budget: "Budget ($)",
-  mellem: "Mellemklasse ($$)",
-  premium: "Premium ($$$)",
-};
 
 const dateFormatter = new Intl.DateTimeFormat("da-DK", {
   year: "numeric",

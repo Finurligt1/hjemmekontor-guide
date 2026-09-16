@@ -1,5 +1,6 @@
 ---
 import { withBase } from "../lib/url";
+import { priceLabel } from "../lib/price";
 
 interface Props {
   slug: string;
@@ -12,12 +13,6 @@ interface Props {
 
 const { slug, productName, image, imageAlt, excerpt, priceTier } =
   Astro.props as Props;
-
-const priceLabel: Record<string, string> = {
-  budget: "Budget ($)",
-  mellem: "Mellemklasse ($$)",
-  premium: "Premium ($$$)",
-};
 ---
 
 <a class="product-card" href={withBase(`/produkter/${slug}/`)}>

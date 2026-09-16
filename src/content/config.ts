@@ -23,8 +23,9 @@ const produkter = defineCollection({
     pros: z.array(z.string()),
     cons: z.array(z.string()),
 
-    // Affiliate
-    affiliateLink: z.string().url(),
+    // Affiliate. "#" er en gyldig midlertidig placeholder, indtil det
+    // rigtige affiliate-link er godkendt og sat ind.
+    affiliateLink: z.string().min(1),
     ctaText: z.string().default("Se pris hos forhandler"),
 
     pubDate: z.date(),
