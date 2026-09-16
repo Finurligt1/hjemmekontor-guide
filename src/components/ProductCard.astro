@@ -1,0 +1,28 @@
+---
+interface Props {
+  slug: string;
+  productName: string;
+  image: string;
+  imageAlt: string;
+  excerpt: string;
+  priceTier: "budget" | "mellem" | "premium";
+}
+
+const { slug, productName, image, imageAlt, excerpt, priceTier } =
+  Astro.props as Props;
+
+const priceLabel: Record<string, string> = {
+  budget: "Budget ($)",
+  mellem: "Mellemklasse ($$)",
+  premium: "Premium ($$$)",
+};
+---
+
+<a class="product-card" href={`/produkter/${slug}/`}>
+  <img src={image} alt={imageAlt} loading="lazy" />
+  <div class="product-card-body">
+    <span class="price-tier">{priceLabel[priceTier]}</span>
+    <h3 class="product-card-title">{productName}</h3>
+    <p class="product-card-excerpt">{excerpt}</p>
+  </div>
+</a>

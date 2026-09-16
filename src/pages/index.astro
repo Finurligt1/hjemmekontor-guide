@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import { siteConfig } from "../site.config";
+
+const allProducts = await getCollection(
+  "produkter",
+  ({ data }) => import.meta.env.DEV || !data.draft
+);
+
+// Nyeste først. Nye artikler dukker automatisk op her - ingen manuel menu-opdatering nødvendig.
+const products = allProducts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Forside" description={siteConfig.description}>
+  <h1 class="page-title">{siteConfig.name}</h1>
+  <p class="page-intro">{siteConfig.description}</p>
+
+  {
+    products.length === 0 ? (
+      <p>Der er endnu ingen artikler. Tilføj den første i src/content/produkter/.</p>
+    ) : (
+      <div class="product-grid">
+        {products.map((product) => (
+          <ProductCard
+            slug={product.slug}
+            productName={product.data.productName}
+            image={product.data.image}
+            imageAlt={product.data.imageAlt}
+            excerpt={product.data.excerpt}
+            priceTier={product.data.priceTier}
+          />
+        ))}
+      </div>
+    )
+  }
+</BaseLayout>
